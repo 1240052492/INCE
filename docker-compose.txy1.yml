@@ -1,0 +1,19 @@
+services:
+  postgres:
+    container_name: vozeb-pro-txy1-postgres
+
+  app:
+    container_name: vozeb-pro-txy1
+    ports: !override
+      - "127.0.0.1:3000:3000"
+    environment:
+      VOZEB_PRO_INTERNAL_ORIGIN: http://43.162.93.138:3001
+
+  generation-worker:
+    container_name: vozeb-pro-txy1-generation-worker
+
+volumes:
+  vozeb-pro-postgres:
+    name: vozeb-pro-txy1-postgres
+  vozeb-pro-data:
+    name: vozeb-pro-txy1-data
